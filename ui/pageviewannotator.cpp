@@ -183,6 +183,11 @@ class PickPointEngine : public AnnotatorEngine
                         f.fromString( m_annotElement.attribute( QStringLiteral("font") ) );
                         ta->setTextFont( f );
                     }
+                    //set width
+                    if ( m_annotElement.hasAttribute( "width" ) )
+                    {
+                        ta->style().setWidth( m_annotElement.attribute( "width" ).toDouble() );
+                    }
                     //set boundary
                     rect.left = qMin(startpoint.x,point.x);
                     rect.top = qMin(startpoint.y,point.y);
@@ -519,7 +524,7 @@ class TextSelectorEngine : public AnnotatorEngine
                     delete selection;
                     selection = 0;
                     Okular::RegularAreaRect * newselection = m_pageView->textSelectionForItem( item(), start, end );
-                    if ( !newselection->isEmpty() )
+                    if ( newselection && !newselection->isEmpty() )
                     {
                         const QList<QRect> geom = newselection->geometry( (int)xScale, (int)yScale );
                         QRect newrect;

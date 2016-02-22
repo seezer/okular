@@ -14,6 +14,9 @@
 
 class QTreeWidget;
 class QPushButton;
+class QTemporaryFile;
+class QTreeWidgetItem;
+
 namespace Okular {
 class Document;
 class EmbeddedFile;
@@ -25,16 +28,19 @@ Q_OBJECT
 	public:
 		EmbeddedFilesDialog(QWidget *parent, const Okular::Document *document);
 
-	private slots:
+	private Q_SLOTS:
 		void saveFile();
 		void attachViewContextMenu( const QPoint& pos );
 		void updateSaveButton();
+		void viewFile();
 
 	private:
 		void saveFile( Okular::EmbeddedFile* );
 
 		QTreeWidget *m_tw;
-        QPushButton *mUser1Button;
+    QPushButton *m_btnSave;
+    QPushButton *m_btnView;
+		QList< QSharedPointer<QTemporaryFile> > m_openedFiles;
 };
 
 #endif
