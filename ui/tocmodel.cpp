@@ -227,7 +227,7 @@ QVariant TOCModel::data( const QModelIndex &index, int role ) const
         case Qt::DecorationRole:
             if ( item->highlight )
             {
-                const QVariant icon = QIcon::fromTheme( QApplication::layoutDirection() == Qt::RightToLeft ? "arrow-left" : "arrow-right" );
+                const QVariant icon = QIcon::fromTheme( QApplication::layoutDirection() == Qt::RightToLeft ? QStringLiteral("arrow-left") : QStringLiteral("arrow-right") );
                 TOCItem *lastHighlighted = d->currentPage.last();
 
                 // in the mobile version our parent is not a QTreeView; add icon to the last highlighted item
@@ -279,7 +279,7 @@ QVariant TOCModel::headerData( int section, Qt::Orientation orientation, int rol
         return QVariant();
 
     if ( section == 0 && role == Qt::DisplayRole )
-        return "Topics";
+        return QStringLiteral("Topics");
 
     return QVariant();
 }
