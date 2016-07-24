@@ -34,6 +34,7 @@
 #include <qmenu.h>
 #include <QInputDialog>
 #include <qdesktopwidget.h>
+#include <QDesktopServices>
 #include <QMimeDatabase>
 #include <QMimeData>
 
@@ -4772,7 +4773,7 @@ void PageView::slotHandleWebShortcutAction()
         KUriFilterData filterData( action->data().toString() );
 
         if ( KUriFilter::self()->filterSearchUri( filterData, KUriFilter::WebShortcutFilter ) ) {
-            KToolInvocation::invokeBrowser( filterData.uri().url() );
+            QDesktopServices::openUrl( filterData.uri() );
         }
     }
 }
