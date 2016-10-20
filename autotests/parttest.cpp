@@ -130,7 +130,7 @@ void PartTest::testFowardPDF()
     const QString texDestination = workDir.path() + "/synctextest.tex";
     QVERIFY(f.copy(texDestination));
     QProcess process;
-    process.setWorkingDirectory(tempDir.name());
+    process.setWorkingDirectory(workDir.path());
     process.start(QStringLiteral("pdflatex"), QStringList() << QStringLiteral("-synctex=1") << QStringLiteral("-interaction=nonstopmode") << texDestination);
     bool started = process.waitForStarted();
     if (!started) {

@@ -284,6 +284,7 @@ void EditAnnotToolDialog::createStubAnnotation()
     {
         Okular::TextAnnotation * ta = new Okular::TextAnnotation();
         ta->setTextType( Okular::TextAnnotation::InPlace );
+        ta->style().setWidth( 1.0 );
         ta->style().setColor( Qt::yellow );
         m_stubann = ta;
     }

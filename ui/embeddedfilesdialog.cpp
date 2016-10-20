@@ -106,7 +106,7 @@ EmbeddedFilesDialog::EmbeddedFilesDialog(QWidget *parent, const Okular::Document
 	connect(m_btnView, SIGNAL(clicked()), this, SLOT(viewFile()));
 	connect(m_tw, &QWidget::customContextMenuRequested, this, &EmbeddedFilesDialog::attachViewContextMenu);
 	connect(m_tw, &QTreeWidget::itemSelectionChanged, this, &EmbeddedFilesDialog::updateSaveButton);
-	connect(m_tw, &QTreeWidget::itemDoubleClicked, this, &EmbeddedFilesDialog::viewFileItem);
+	connect(m_tw, &QTreeWidget::itemDoubleClicked, this, &EmbeddedFilesDialog::viewFile);
 }
 
 void EmbeddedFilesDialog::updateSaveButton()
@@ -154,7 +154,7 @@ void EmbeddedFilesDialog::attachViewContextMenu( const QPoint& /*pos*/ )
     }
 }
 
-void EmbeddedFilesDialog::viewFile( Okular::EmbeddedFile* ef )
+void EmbeddedFilesDialog::viewFile()
 {
 	QList<QTreeWidgetItem *> selected = m_tw->selectedItems();
 	foreach(QTreeWidgetItem *twi, selected)
